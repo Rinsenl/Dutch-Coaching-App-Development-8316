@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for theming */
+:root {
+  --container-max-width: 1290px;
+  --bg-color-outer: #8a1708;
+  --bg-color-container: #f7e6d9;
+  --bg-color-cards: #edede6;
+  --input-bg-color: #ffffff;
+  --button-bg-color: #33a370;
+  --button-hover-color: #8a1708;
+  --button-text-color: #ffffff;
+  --header-bg-color: #edede6;
+  --primary-icon-color: #3B82F6;
+  --secondary-icon-color: #6B7280;
+}
+
+/* Apply theme colors */
+.theme-bg-outer {
+  background-color: var(--bg-color-outer);
+}
+
+.theme-bg-container {
+  background-color: var(--bg-color-container);
+}
+
+.theme-bg-cards {
+  background-color: var(--bg-color-cards);
+}
+
+.theme-input {
+  background-color: var(--input-bg-color);
+}
+
+.theme-button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  font-weight: 600;
+}
+
+.theme-button:hover {
+  background-color: var(--button-hover-color);
+}
+
+.theme-header {
+  background-color: var(--header-bg-color);
+}
+
+/* Override Tailwind classes with CSS variables */
+.bg-gray-50 {
+  background-color: var(--bg-color-container) !important;
+}
+
+.bg-white {
+  background-color: var(--bg-color-cards) !important;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Input field styling */
+input, textarea, select {
+  background-color: var(--input-bg-color) !important;
+}
+
+/* Container max width */
+.container-themed {
+  max-width: var(--container-max-width);
+}
+
+/* Help Hub z-index override to ensure it appears above navigation */
+.quest-help-hub,
+.quest-help-hub * {
+  z-index: 9999 !important;
+}
+
+/* Ensure help hub appears above sidebar and navbar */
+[data-quest-component="help-hub"] {
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+/* Override any z-index conflicts */
+.quest-help-hub-container {
+  z-index: 9999 !important;
+}
+
+/* Feedback Button Specific Styles */
+.feedback-button {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+/* Ensure feedback workflow appears above all other elements */
+[data-quest-component="feedback-workflow"] {
+  z-index: 10000 !important;
+}
+
+.quest-feedback-workflow {
+  z-index: 10000 !important;
+}
+
+/* Quest SDK Component Styling */
+.quest-login-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.quest-onboarding-container {
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px;
+}
+
+/* Custom Quest component overrides */
+[data-quest-component="login"] {
+  border-radius: 12px !important;
+  padding: 24px !important;
+}
+
+[data-quest-component="onboarding"] {
+  border-radius: 12px !important;
+  padding: 24px !important;
+}
+
+[data-quest-component="feedback-workflow"] {
+  border-radius: 8px !important;
+  font-size: 14px !important;
+}
+
+/* Floating button animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.feedback-button-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+.feedback-button-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .quest-login-container,
+  .quest-onboarding-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Adjust feedback button for mobile */
+  .feedback-button {
+    top: 40% !important;
+    right: -8px !important;
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+  }
+}
+
+/* Ensure proper stacking order */
+.z-feedback {
+  z-index: 10000;
+}
+
+.z-help-hub {
+  z-index: 9999;
+}
+
+/* Smooth transitions for better UX */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar for feedback modal */
+.feedback-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feedback-modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.feedback-modal-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.feedback-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
